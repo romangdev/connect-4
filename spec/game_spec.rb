@@ -5,8 +5,9 @@ describe Game do
   let(:player) { double("player") }
 
   describe "#create_players" do 
-    it "calls New on the Player class twice" do
-      expect(Player).to receive(:new).twice
+    it "calls New on the Player class twice, with 1 and 2 player_number arg" do
+      expect(Player).to receive(:new).with(1)
+      expect(Player).to receive(:new).with(2)
       game.create_players
     end
   end

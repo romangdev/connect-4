@@ -11,8 +11,8 @@ class Game
   end
 
   def create_players
-    @player1 = Player.new
-    @player2 = Player.new
+    @player1 = Player.new(1)
+    @player2 = Player.new(2)
   end
 
   def prompt_player1_for_symbol
