@@ -44,4 +44,26 @@ HEREDOC
       return player2_symbol = "\u26aa"
     end
   end
+
+  def get_column_choice
+    flag = false
+
+    until flag == true
+      column = gets.to_i
+      flag = validate_column_choice(column)
+    end
+
+    column.to_i - 1
+  end
+
+  private 
+
+  def validate_column_choice(column)
+    if column > 0 && column < 8
+      return true
+    else 
+      puts "Please enter a column between 1 and 7."
+      return false
+    end
+  end
 end

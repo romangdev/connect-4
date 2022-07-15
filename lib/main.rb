@@ -20,3 +20,5 @@ player1.assign_symbol(player1_symbol)
 puts "Player 1, you are playing as #{player1.player_symbol}"
 player2.assign_symbol(player2_symbol)
 puts "Player 2, you are playing as #{player2.player_symbol}"
+
+game.get_column_choice

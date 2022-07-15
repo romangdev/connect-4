@@ -56,4 +56,35 @@ describe Game do
       end
     end
   end
+
+  describe "#get_column_choice" do 
+    context "when player enters column 1" do 
+      before do 
+        allow(game).to receive(:gets).and_return(1)
+      end
+      it "returns 0 (adjust for 0-array)" do 
+        expect(game.get_column_choice).to eq(0)
+      end 
+    end
+
+    context "when player enters column 6" do 
+      before do 
+        allow(game).to receive(:gets).and_return(6)
+      end
+      it "returns 5" do 
+        expect(game.get_column_choice).to eq(5)
+      end 
+    end
+
+    context "when player enters 2 invalid column inputs before a valid one" do 
+      before do 
+        allow(game).to receive(:gets).and_return("dd", "0", "2")
+      end
+      it "returns 5" do 
+        error_msg = "Please enter a column between 1 and 7."
+        expect(game).to receive(:puts).with(error_msg).twice
+        game.get_column_choice
+      end 
+    end
+  end
 end
