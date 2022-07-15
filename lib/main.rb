@@ -7,3 +7,7 @@ puts red
 
 white = "\u26aa"
 puts white
+
+board = Board.new
+board.generate_board
+board.display_board
