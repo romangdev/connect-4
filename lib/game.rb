@@ -36,4 +36,12 @@ HEREDOC
       end
     end
   end
+
+  def get_player2_symbol(player1_symbol)
+    if player1_symbol == "\u26aa"
+      return player2_symbol = "\u26d4"
+    else 
+      return player2_symbol = "\u26aa"
+    end
+  end
 end

@@ -41,4 +41,18 @@ describe Game do
       end
     end
   end
+
+  describe "#get_player2_symbol" do 
+    context "if player1 symbol is white" do 
+      it "returns red symbol for player2" do 
+        expect(game.get_player2_symbol("\u26aa")).to eq("\u26d4")
+      end
+    end
+
+    context "if player1 symbol is red" do 
+      it "returns white symbol for player2" do 
+        expect(game.get_player2_symbol("\u26d4")).to eq("\u26aa")
+      end
+    end
+  end
 end
