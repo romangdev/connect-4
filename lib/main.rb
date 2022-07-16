@@ -26,7 +26,7 @@ while true do
   column_space = false
   until column_space
     board.display_board
-    puts "Player 1 , choose your column (1 - 7):"
+    puts "Player 1 #{player1.player_symbol}, choose your column (1 - 7):"
     p1_choice = game.get_column_choice
     column_space = game.place_column_choice(p1_choice, board.board, player1.player_symbol)
   end
@@ -34,7 +34,7 @@ while true do
   column_space = false
   until column_space
     board.display_board
-    puts "Player 2, choose your column (1 - 7):"
+    puts "Player 2 #{player2.player_symbol}, choose your column (1 - 7):"
     p2_choice = game.get_column_choice
     column_space = game.place_column_choice(p2_choice, board.board, player2.player_symbol)
   end

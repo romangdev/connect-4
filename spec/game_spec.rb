@@ -197,6 +197,15 @@ describe Game do
       end
     end
   end
+
+  # describe "#board_full?" do 
+  #   context "when the board is completely filled with symbols" do 
+
+  #     it "returns true" do 
+
+  #     end
+  #   end
+  # end
 end
 
 # write more tests for place column choice to check overflow of a column
