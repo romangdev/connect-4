@@ -80,11 +80,34 @@ describe Game do
       before do 
         allow(game).to receive(:gets).and_return("dd", "0", "2")
       end
-      it "returns 5" do 
+      it "returns error message twice" do 
         error_msg = "Please enter a column between 1 and 7."
         expect(game).to receive(:puts).with(error_msg).twice
         game.get_column_choice
       end 
+    end
+  end
+
+  describe "#place_column_choice" do 
+    array = [[" ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " "],
+            [" ", " ", " ", " ", " ", " ", " "]]
+
+    let(:board) { double("board", board: array)}
+
+    it "fills the appropriate column" do 
+      updated_array = [[" ", " ", " ", " ", " ", " ", " "],
+                      [" ", " ", " ", " ", " ", " ", " "],
+                      [" ", " ", " ", " ", " ", " ", " "],
+                      [" ", " ", " ", " ", " ", " ", " "],
+                      [" ", " ", " ", " ", " ", " ", " "],
+                      [" ", " ", "\u26d4", " ", " ", " ", " "]]
+
+      game.place_column_choice(2, array, "\u26d4")
+      expect(board.board).to eq(updated_array)
     end
   end
 end

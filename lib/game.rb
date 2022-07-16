@@ -53,7 +53,18 @@ HEREDOC
       flag = validate_column_choice(column)
     end
 
-    column.to_i - 1
+    column - 1
+  end
+
+  def place_column_choice(player_choice, board, player_symbol)
+    for i in 5.downto(0)
+      if board[i][player_choice] != " "
+        next
+      else
+        board[i][player_choice] = player_symbol
+        return board
+      end
+    end
   end
 
   private 
