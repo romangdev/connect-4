@@ -101,5 +101,19 @@ describe Board do
         expect(board.four_horizontally?).to be false
       end
     end
+
+    context "when there is four across but it's not the same symbol connected" do 
+      before do 
+        board.board = [["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "\u26aa", "\u26aa", "\u26aa", "\u26d3", "\u26d3", "  "],
+                      ["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["\u26aa", "\u26aa", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "\u26aa", "  ", "\u26aa", "  ", "  "]]
+      end
+      it "returns false" do 
+        expect(board.four_horizontally?).to be false
+      end
+    end
   end
 end
