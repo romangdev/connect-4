@@ -58,13 +58,16 @@ HEREDOC
 
   def place_column_choice(player_choice, board, player_symbol)
     for i in 5.downto(0)
-      if board[i][player_choice] != " "
+      if board[i][player_choice] == "\u26d4" || board[i][player_choice] == "\u26aa"
         next
       else
         board[i][player_choice] = player_symbol
         return board
       end
     end
+
+    puts "That column is full! Please try again."
+    return false
   end
 
   private 

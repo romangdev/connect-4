@@ -98,16 +98,106 @@ describe Game do
 
     let(:board) { double("board", board: array)}
 
-    it "fills the appropriate column" do 
-      updated_array = [[" ", " ", " ", " ", " ", " ", " "],
-                      [" ", " ", " ", " ", " ", " ", " "],
-                      [" ", " ", " ", " ", " ", " ", " "],
-                      [" ", " ", " ", " ", " ", " ", " "],
-                      [" ", " ", " ", " ", " ", " ", " "],
-                      [" ", " ", "\u26d4", " ", " ", " ", " "]]
+    context "when placing a symbol in column 3 with no previous choice" do 
+      it "fills column 3 at the bottom of the column" do 
+        updated_array = [[" ", " ", " ", " ", " ", " ", " "],
+                        [" ", " ", " ", " ", " ", " ", " "],
+                        [" ", " ", " ", " ", " ", " ", " "],
+                        [" ", " ", " ", " ", " ", " ", " "],
+                        [" ", " ", " ", " ", " ", " ", " "],
+                        [" ", " ", "\u26d4", " ", " ", " ", " "]]
 
-      game.place_column_choice(2, array, "\u26d4")
-      expect(board.board).to eq(updated_array)
+        game.place_column_choice(2, array, "\u26d4")
+        expect(board.board).to eq(updated_array)
+      end
+    end
+
+    context "when placing a symbol in column 7 with no previous choice" do 
+      array_1 = [[" ", " ", " ", " ", " ", " ", " "],
+              [" ", " ", " ", " ", " ", " ", " "],
+              [" ", " ", " ", " ", " ", " ", " "],
+              [" ", " ", " ", " ", " ", " ", " "],
+              [" ", " ", " ", " ", " ", " ", " "],
+              [" ", " ", " ", " ", " ", " ", " "]]
+
+      let(:board1) { double("board", board: array_1)}
+
+      it "fills column 7 at the bottom of the column" do 
+        updated_array_1 = [[" ", " ", " ", " ", " ", " ", " "],
+                        [" ", " ", " ", " ", " ", " ", " "],
+                        [" ", " ", " ", " ", " ", " ", " "],
+                        [" ", " ", " ", " ", " ", " ", " "],
+                        [" ", " ", " ", " ", " ", " ", " "],
+                        [" ", " ", " ", " ", " ", " ", "\u26d4"]]
+  
+        game.place_column_choice(6, array_1, "\u26d4")
+        expect(board1.board).to eq(updated_array_1)
+      end
+    end
+
+    context "when placing a symbol in column 1 with previous choices" do 
+      array_2 = [[" ", " ", " ", " ", " ", " ", " "],
+              [" ", " ", " ", " ", " ", " ", " "],
+              [" ", " ", " ", " ", " ", " ", " "],
+              ["\u26d4", " ", " ", " ", " ", " ", " "],
+              ["\u26d4", " ", " ", "\u26d4", " ", " ", " "],
+              ["\u26d4", " ", " ", "\u26d4", " ", " ", " "]]
+
+      let(:board2) { double("board", board: array_2)}
+
+      it "fills column 1 on top of all previous choices" do 
+        updated_array_2 = [[" ", " ", " ", " ", " ", " ", " "],
+                        [" ", " ", " ", " ", " ", " ", " "],
+                        ["\u26d4", " ", " ", " ", " ", " ", " "],
+                        ["\u26d4", " ", " ", " ", " ", " ", " "],
+                        ["\u26d4", " ", " ", "\u26d4", " ", " ", " "],
+                        ["\u26d4", " ", " ", "\u26d4", " ", " ", " "]]
+  
+        game.place_column_choice(0, array_2, "\u26d4")
+        expect(board2.board).to eq(updated_array_2)
+      end
+    end
+
+    context "when placing a symbol in column 5 with previous choices" do 
+      array_3 = [[" ", " ", " ", " ", " ", " ", " "],
+              [" ", " ", " ", " ", "\u26aa", " ", " "],
+              ["\u26d4", " ", " ", " ", "\u26aa", " ", " "],
+              ["\u26d4", " ", " ", " ", "\u26aa", " ", " "],
+              ["\u26d4", " ", " ", "\u26d4", "\u26aa", " ", " "],
+              ["\u26d4", " ", " ", "\u26d4", "\u26aa", " ", " "]]
+
+      let(:board3) { double("board", board: array_3)}
+
+      it "fills column 5 on top of all previous choices" do 
+        updated_array_3 = [[" ", " ", " ", " ", "\u26aa", " ", " "],
+                        [" ", " ", " ", " ", "\u26aa", " ", " "],
+                        ["\u26d4", " ", " ", " ", "\u26aa", " ", " "],
+                        ["\u26d4", " ", " ", " ", "\u26aa", " ", " "],
+                        ["\u26d4", " ", " ", "\u26d4", "\u26aa", " ", " "],
+                        ["\u26d4", " ", " ", "\u26d4", "\u26aa", " ", " "]]
+  
+        game.place_column_choice(4, array_3, "\u26aa")
+        expect(board3.board).to eq(updated_array_3)
+      end
+    end
+
+    context "when placing a symbol in column 5 with column completely filled" do 
+      array_4 = [[" ", " ", " ", " ", "\u26aa", " ", " "],
+              [" ", " ", " ", " ", "\u26aa", " ", " "],
+              ["\u26d4", " ", " ", " ", "\u26aa", " ", " "],
+              ["\u26d4", " ", " ", " ", "\u26aa", " ", " "],
+              ["\u26d4", " ", " ", "\u26d4", "\u26aa", " ", " "],
+              ["\u26d4", " ", " ", "\u26d4", "\u26aa", " ", " "]]
+
+      let(:board4) { double("board", board: array_4)}
+
+      it "returns false" do   
+        return_val = game.place_column_choice(4, array_4, "\u26aa")
+        expect(return_val).to be false
+      end
     end
   end
 end
+
+# write more tests for place column choice to check overflow of a column
+# and ensure additional choice are placed ON TOP of previous choices

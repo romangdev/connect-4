@@ -8,7 +8,7 @@ class Board
   end
 
   def generate_board 
-    @board = Array.new(6, Array.new(7, " "))
+    @board = Array.new(6) {Array.new(7, "  ")}
   end
 
   def display_board

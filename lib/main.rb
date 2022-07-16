@@ -22,8 +22,20 @@ player2.assign_symbol(player2_symbol)
 puts "Player 2, you are playing as #{player2.player_symbol}"
 
 #start of game loop
-puts "Player 1, choose your column (1 - 7):"
-p1_choice = game.get_column_choice
+while true do 
+  column_space = false
+  until column_space
+    board.display_board
+    puts "Player 1 , choose your column (1 - 7):"
+    p1_choice = game.get_column_choice
+    column_space = game.place_column_choice(p1_choice, board.board, player1.player_symbol)
+  end
 
-puts "Player 2, choose your column (1 - 7):"
-p2_choice = game.get_column_choice
+  column_space = false
+  until column_space
+    board.display_board
+    puts "Player 2, choose your column (1 - 7):"
+    p2_choice = game.get_column_choice
+    column_space = game.place_column_choice(p2_choice, board.board, player2.player_symbol)
+  end
+end
