@@ -26,4 +26,23 @@ class Board
 
     true
   end
+
+  def four_horizontally?
+    @board.each do |row|
+      count = 0
+      for i in 0..row.length - 1
+        return true if count == 3
+
+        unless row[i] == "  "
+          if row[i] == row[i + 1]
+            count += 1 
+          else 
+            count = 0
+          end
+        end
+      end
+    end
+
+    false
+  end
 end

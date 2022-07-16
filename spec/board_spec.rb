@@ -58,4 +58,48 @@ describe Board do
       end
     end
   end
+
+  describe "#four_horizontally" do 
+    context "when there are four red symbols horizontally connected" do 
+      before do 
+        board.board = [["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "  ", "\u26d4", "\u26d4", "\u26d4", "\u26d4"]]
+      end
+      it "returns true" do 
+        expect(board.four_horizontally?).to be true
+      end
+    end
+
+    context "when there are four white symbols horizontally connected" do 
+      before do 
+        board.board = [["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "\u26aa", "\u26aa", "\u26aa", "\u26aa", "  ", "  "],
+                      ["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "  ", "  ", "  ", "  ", "  "]]
+      end
+      it "returns true" do 
+        expect(board.four_horizontally?).to be true
+      end
+    end
+
+    context "when there is no four across of any symbol" do 
+      before do 
+        board.board = [["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "\u26aa", "\u26aa", "\u26aa", "  ", "  ", "  "],
+                      ["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["\u26aa", "\u26aa", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "\u26aa", "  ", "\u26aa", "  ", "  "]]
+      end
+      it "returns false" do 
+        expect(board.four_horizontally?).to be false
+      end
+    end
+  end
 end
