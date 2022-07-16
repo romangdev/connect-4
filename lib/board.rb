@@ -28,19 +28,40 @@ class Board
   end
 
   def four_horizontally?
-    @board.each do |row|
-      count = 0
-      for i in 0..row.length - 1
-        return true if count == 3
+    count = 0
 
+    @board.each do |row|
+      for i in 0..row.length - 2
         unless row[i] == "  "
           if row[i] == row[i + 1]
             count += 1 
+            return true if count == 3
+
           else 
             count = 0
           end
         end
       end
+    end
+
+    false
+  end
+
+  def four_vertically?
+    count = 0
+
+    for i in 0..board.length
+      for n in 0..board.length - 2
+        unless board[n][i] == "  "
+          if board[n][i] == board[n + 1][i]
+            count += 1
+            return true if count == 3
+  
+          else
+            count = 0
+          end
+        end
+      end 
     end
 
     false
