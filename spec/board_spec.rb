@@ -174,4 +174,92 @@ describe Board do
       end
     end
   end
+
+  describe "#four_down_diagonally_col?" do 
+    context "when four red symbols connect diagonally starting on left-most column" do 
+      before do 
+        board.board = [["\u26d3", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "\u26d3", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "\u26d3", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "  ", "\u26d3", "  ", "  ", "  "],
+                      ["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "  ", "  ", "  ", "  ", "  "]]
+      end
+      it "returns true" do 
+        expect(board.four_down_diagonally_col?).to be true
+      end
+    end
+  end
+
+  context "when four red symbols connect diagonally starting on left-most column" do 
+    before do 
+      board.board = [["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                    ["\u26d3", "  ", "  ", "  ", "  ", "  ", "  "],
+                    ["  ", "\u26d3", "  ", "  ", "  ", "  ", "  "],
+                    ["  ", "  ", "\u26d3", "  ", "  ", "  ", "  "],
+                    ["  ", "  ", "  ", "\u26d3", "  ", "  ", "  "],
+                    ["  ", "  ", "  ", "  ", "  ", "  ", "  "]]
+    end
+    it "returns true" do 
+      expect(board.four_down_diagonally_col?).to be true
+    end
+  end
+
+  context "when a diagonal win is not fulfilled" do 
+    before do 
+      board.board = [["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                    ["\u26d3", "  ", "  ", "  ", "  ", "  ", "  "],
+                    ["  ", "\u26d3", "  ", "  ", "  ", "  ", "  "],
+                    ["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                    ["  ", "  ", "  ", "\u26d3", "  ", "  ", "  "],
+                    ["\u26d3", "  ", "  ", "  ", "  ", "  ", "  "]]
+    end
+    it "returns false" do 
+      expect(board.four_down_diagonally_col?).to be false
+    end
+  end
+
+  describe "#four_up_diagonally_col" do 
+    context "when four white symbols line up diagonally from right-most column" do
+      before do 
+        board.board = [["  ", "  ", "  ", "  ", "  ", "  ", "\u26aa"],
+                      ["  ", "  ", "  ", "  ", "  ", "\u26aa", "  "],
+                      ["  ", "  ", "  ", "  ", "\u26aa", "  ", "  "],
+                      ["  ", "  ", "  ", "\u26aa", "  ", "  ", "  "],
+                      ["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "  ", "  ", "  ", "  ", "  "]]
+      end
+      it "returns true" do 
+        expect(board.four_up_diagonally_col?).to be true
+      end
+    end
+
+    context "when four white symbols line up diagonally from right-most column" do
+      before do 
+        board.board = [["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "  ", "  ", "  ", "  ", "\u26aa"],
+                      ["  ", "  ", "  ", "  ", "  ", "\u26aa", "  "],
+                      ["  ", "  ", "  ", "  ", "\u26aa", "  ", "  "],
+                      ["  ", "  ", "  ", "\u26aa", "  ", "  ", "  "]]
+      end
+      it "returns true" do 
+        expect(board.four_up_diagonally_col?).to be true
+      end
+    end
+
+    context "when a diagonal win is not fulfilled" do
+      before do 
+        board.board = [["  ", "\u26aa", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "\u26aa", "  ", "  ", "  ", "\u26aa"],
+                      ["  ", "\u26aa", "  ", "  ", "  ", "\u26aa", "  "],
+                      ["  ", "  ", "  ", "  ", "  ", "  ", "  "],
+                      ["  ", "  ", "  ", "\u26aa", "  ", "  ", "\u26aa"]]
+      end
+      it "returns false" do 
+        expect(board.four_up_diagonally_col?).to be false
+      end
+    end
+  end
 end
