@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative 'board'
-require_relative 'player'
-require_relative 'game'
+require_relative 'lib/board'
+require_relative 'lib/player'
+require_relative 'lib/game'
 
 board = Board.new
 board.generate_board
@@ -33,7 +33,7 @@ while true
 
     board.display_board
     game.check_winner(board.winner_symbol, player1.player_symbol, player2.player_symbol)
-    false
+    return false
   end
 
   column_space = false
@@ -44,6 +44,6 @@ while true
 
     board.display_board
     game.check_winner(board.winner_symbol, player1.player_symbol, player2.player_symbol)
-    false
+    return false
   end
 end
