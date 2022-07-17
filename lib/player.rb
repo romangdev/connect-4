@@ -2,6 +2,7 @@
 
 class Player
   attr_accessor :player_symbol
+  attr_reader :player_number
 
   def initialize(player_number = nil, player_symbol = nil)
     @player_number = player_number

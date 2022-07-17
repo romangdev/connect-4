@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "player"
+require_relative "board"
 
 class Game
   attr_accessor :player1, :player2
@@ -45,6 +46,7 @@ HEREDOC
     end
   end
 
+  # find out which column the player wants to place their symbol
   def get_column_choice
     flag = false
 
@@ -56,6 +58,7 @@ HEREDOC
     column - 1
   end
 
+  # place the player's symbol in their column of choice
   def place_column_choice(player_choice, board, player_symbol)
     for i in 5.downto(0)
       if board[i][player_choice] == "\u26d4" || board[i][player_choice] == "\u26aa"
@@ -68,8 +71,9 @@ HEREDOC
 
     puts "That column is full! Please try again."
     return false
-  end
+  end 
 
+  # used when "game_over" is triggered to check which player won, or if board is full
   def check_winner(winner_symbol, player1_symbol, player2_symbol)
     if winner_symbol == player1_symbol
       puts "Player 1 is the winner!"
@@ -78,6 +82,15 @@ HEREDOC
     else
       puts "The board is filled - it's a tie!"
     end
+  end
+
+  # runs one turn for a player
+  def player_turn(board, player)
+    board.display_board
+    puts "Player #{player.player_number} #{player.player_symbol}, choose your column (1 - 7):"
+    p1_choice = self.get_column_choice
+    column_space = self.place_column_choice(p1_choice, board.board, player.player_symbol)
+    return column_space
   end
 
   private 

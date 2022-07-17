@@ -18,6 +18,7 @@ class Board
     end
   end
 
+  # check if the board has been completely filled with symbols (no more open spots)
   def board_full?
     @board.each do |row|
       row.each do |column| 
@@ -28,6 +29,7 @@ class Board
     true
   end
 
+  # check if four of same symbols are connected horizontally
   def four_horizontally?
     count = 0
 
@@ -50,6 +52,7 @@ class Board
     false
   end
 
+  # check if four of same symbols are connected vertically
   def four_vertically?
     count = 0
 
@@ -72,6 +75,7 @@ class Board
     false
   end
 
+  # check if four of same symbols are connected diagaonally
   def four_diagonally?
     return true if four_down_diagonally?
     return true if four_up_diagonally?
@@ -88,6 +92,7 @@ class Board
 
   private
 
+  # used in a public method to check four any rising diagonal win
   def four_down_diagonally?
     for i in 0..2
       for n in 0..3
@@ -108,6 +113,7 @@ class Board
     false
   end
 
+  # used in a public method to check four any falling diagonal win
   def four_up_diagonally?
     for i in 5.downto(3)
       for n in 0..3
