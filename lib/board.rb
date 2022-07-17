@@ -66,6 +66,13 @@ class Board
     false
   end
 
+  def four_diagonally?
+    return true if four_down_diagonally?
+    return true if four_up_diagonally?
+
+    false
+  end
+
   private
 
   def four_down_diagonally?

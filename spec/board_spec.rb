@@ -175,7 +175,7 @@ describe Board do
     end
   end
 
-  describe "#four_down_diagonally?" do 
+  describe "#four_diagonally?" do 
     context "when four red symbols connect diagonally downards" do
       before do 
         board.board = [["  ", "  ", "  ", "  ", "  ", "  ", "  "],
@@ -186,7 +186,7 @@ describe Board do
                       ["  ", "  ", "  ", "  ", "  ", "  ", "  "]]
       end
       it "returns true" do 
-        expect(board.four_down_diagonally?).to be true
+        expect(board.four_diagonally?).to be true
       end
 
       before do 
@@ -198,7 +198,7 @@ describe Board do
                       ["  ", "  ", "  ", "  ", "  ", "\u26d3", "  "]]
       end
       it "returns true" do 
-        expect(board.four_down_diagonally?).to be true
+        expect(board.four_diagonally?).to be true
       end
 
       before do 
@@ -210,7 +210,7 @@ describe Board do
                       ["  ", "  ", "  ", "  ", "  ", "  ", "  "]]
       end
       it "returns true" do 
-        expect(board.four_down_diagonally?).to be true
+        expect(board.four_diagonally?).to be true
       end
     end
 
@@ -224,12 +224,10 @@ describe Board do
                       ["  ", "  ", "  ", "  ", "\u26d3", "  ", "  "]]
       end
       it "returns false" do 
-        expect(board.four_down_diagonally?).to be false
+        expect(board.four_diagonally?).to be false
       end
     end
-  end
 
-  describe "#four_up_diagonally?" do 
     context "when there are four white symbols diagonally connects upwards" do 
       before do 
         board.board = [["  ", "  ", "  ", "  ", "  ", "\u26aa", "  "],
@@ -240,7 +238,7 @@ describe Board do
                       ["  ", "  ", "  ", "  ", "  ", "  ", "  "]]
       end
       it "returns true" do 
-        expect(board.four_up_diagonally?).to be true
+        expect(board.four_diagonally?).to be true
       end
 
       before do 
@@ -252,7 +250,7 @@ describe Board do
                       ["  ", "  ", "  ", "\u26aa", "  ", "  ", "  "]]
       end
       it "returns true" do 
-        expect(board.four_up_diagonally?).to be true
+        expect(board.four_diagonally?).to be true
       end
     end
 
@@ -266,7 +264,7 @@ describe Board do
                       ["  ", "  ", "  ", "  ", "\u26d3", "  ", "  "]]
       end
       it "returns false" do 
-        expect(board.four_up_diagonally?).to be false
+        expect(board.four_diagonally?).to be false
       end
     end
   end
