@@ -73,6 +73,13 @@ class Board
     false
   end
 
+  def game_over?
+    return true if four_diagonally? || four_horizontally? || four_vertically?
+    return true if board_full?
+
+    false
+  end
+
   private
 
   def four_down_diagonally?
