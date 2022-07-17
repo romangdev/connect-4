@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require_relative "player"
-require_relative "board"
+require_relative 'player'
+require_relative 'board'
 
 class Game
   attr_accessor :player1, :player2
@@ -17,10 +17,10 @@ class Game
   end
 
   def prompt_player1_for_symbol
-    puts <<-HEREDOC
-Player1 - type 'R' if you want to play red pieces
-Or 'W' if you want to play white pieces.\n
-HEREDOC
+    puts <<~HEREDOC
+      Player1 - type 'R' if you want to play red pieces
+      Or 'W' if you want to play white pieces.\n
+    HEREDOC
   end
 
   def get_player1_symbol
@@ -28,9 +28,9 @@ HEREDOC
 
     until player1_symbol
       player1_choice = gets.chomp.upcase
-      if player1_choice == "R"
+      if player1_choice == 'R'
         return player1_symbol = "\u26d4"
-      elsif player1_choice == "W"
+      elsif player1_choice == 'W'
         return player1_symbol = "\u26aa"
       else
         puts "That wasn't a choice. Please try again."
@@ -39,11 +39,11 @@ HEREDOC
   end
 
   def get_player2_symbol(player1_symbol)
-    if player1_symbol == "\u26aa"
-      return player2_symbol = "\u26d4"
-    else 
-      return player2_symbol = "\u26aa"
-    end
+    player2_symbol = if player1_symbol == "\u26aa"
+                       "\u26d4"
+                     else
+                       "\u26aa"
+                     end
   end
 
   # find out which column the player wants to place their symbol
@@ -69,16 +69,16 @@ HEREDOC
       end
     end
 
-    puts "That column is full! Please try again."
-    return false
-  end 
+    puts 'That column is full! Please try again.'
+    false
+  end
 
   # used when "game_over" is triggered to check which player won, or if board is full
   def check_winner(winner_symbol, player1_symbol, player2_symbol)
     if winner_symbol == player1_symbol
-      puts "Player 1 is the winner!"
+      puts 'Player 1 is the winner!'
     elsif winner_symbol == player2_symbol
-      puts "Player 2 is the winner!"
+      puts 'Player 2 is the winner!'
     else
       puts "The board is filled - it's a tie!"
     end
@@ -88,19 +88,18 @@ HEREDOC
   def player_turn(board, player)
     board.display_board
     puts "Player #{player.player_number} #{player.player_symbol}, choose your column (1 - 7):"
-    p1_choice = self.get_column_choice
-    column_space = self.place_column_choice(p1_choice, board.board, player.player_symbol)
-    return column_space
+    p1_choice = get_column_choice
+    place_column_choice(p1_choice, board.board, player.player_symbol)
   end
 
-  private 
+  private
 
   def validate_column_choice(column)
     if column > 0 && column < 8
-      return true
-    else 
-      puts "Please enter a column between 1 and 7."
-      return false
+      true
+    else
+      puts 'Please enter a column between 1 and 7.'
+      false
     end
   end
 end

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative "board"
-require_relative "player"
-require_relative "game"
+require_relative 'board'
+require_relative 'player'
+require_relative 'game'
 
 board = Board.new
 board.generate_board
@@ -24,26 +24,26 @@ player2.assign_symbol(player2_symbol)
 puts "Player 2, you are playing as #{player2.player_symbol}"
 
 # start the game loop
-while true do 
+while true
   column_space = false
   until column_space
     column_space = game.player_turn(board, player1)
 
-    if board.game_over?
-      board.display_board
-      game.check_winner(board.winner_symbol, player1.player_symbol, player2.player_symbol)
-      return false
-    end
+    next unless board.game_over?
+
+    board.display_board
+    game.check_winner(board.winner_symbol, player1.player_symbol, player2.player_symbol)
+    return false
   end
 
   column_space = false
   until column_space
     column_space = game.player_turn(board, player2)
 
-    if board.game_over?
-      board.display_board
-      game.check_winner(board.winner_symbol, player1.player_symbol, player2.player_symbol)
-      return false
-    end
+    next unless board.game_over?
+
+    board.display_board
+    game.check_winner(board.winner_symbol, player1.player_symbol, player2.player_symbol)
+    return false
   end
 end

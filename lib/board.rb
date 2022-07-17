@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Board 
+class Board
   attr_accessor :board, :winner_symbol
 
   def initialize
@@ -8,8 +8,8 @@ class Board
     @winner_symbol = nil
   end
 
-  def generate_board 
-    @board = Array.new(6) { Array.new(7, "  ") }
+  def generate_board
+    @board = Array.new(6) { Array.new(7, '  ') }
   end
 
   def display_board
@@ -21,8 +21,8 @@ class Board
   # check if the board has been completely filled with symbols (no more open spots)
   def board_full?
     @board.each do |row|
-      row.each do |column| 
-        return false if column == "  "
+      row.each do |column|
+        return false if column == '  '
       end
     end
 
@@ -35,14 +35,14 @@ class Board
 
     @board.each do |row|
       for i in 0..row.length - 2
-        unless row[i] == "  "
+        unless row[i] == '  '
           if row[i] == row[i + 1]
-            count += 1 
+            count += 1
             if count == 3
               @winner_symbol = row[i]
-              return true 
+              return true
             end
-          else 
+          else
             count = 0
           end
         end
@@ -58,18 +58,18 @@ class Board
 
     for i in 0..@board.length
       for n in 0..@board.length - 2
-        unless @board[n][i] == "  "
+        unless @board[n][i] == '  '
           if @board[n][i] == @board[n + 1][i]
             count += 1
             if count == 3
               @winner_symbol = @board[n][i]
-              return true 
+              return true
             end
           else
             count = 0
           end
         end
-      end 
+      end
     end
 
     false
@@ -96,10 +96,10 @@ class Board
   def four_down_diagonally?
     for i in 0..2
       for n in 0..3
-        unless @board[i][n] == "  "
+        unless @board[i][n] == '  '
           if @board[i][n] == @board[i + 1][n + 1] &&
-            @board[i][n] == @board[i + 2][n + 2] &&
-            @board[i][n] == @board[i + 3][n + 3]
+             @board[i][n] == @board[i + 2][n + 2] &&
+             @board[i][n] == @board[i + 3][n + 3]
 
             @winner_symbol = @board[i][n]
             return true
@@ -117,10 +117,10 @@ class Board
   def four_up_diagonally?
     for i in 5.downto(3)
       for n in 0..3
-        unless @board[i][n] == "  "
+        unless @board[i][n] == '  '
           if @board[i][n] == @board[i - 1][n + 1] &&
-            @board[i][n] == @board[i - 2][n + 2] &&
-            @board[i][n] == @board[i - 3][n + 3]
+             @board[i][n] == @board[i - 2][n + 2] &&
+             @board[i][n] == @board[i - 3][n + 3]
 
             @winner_symbol = @board[i][n]
             return true
