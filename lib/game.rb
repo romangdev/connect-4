@@ -86,6 +86,7 @@ class Game
 
   # runs one turn for a player
   def player_turn(board, player)
+    puts "\n"
     board.display_board
     puts "Player #{player.player_number} #{player.player_symbol}, choose your column (1 - 7):"
     p1_choice = get_column_choice

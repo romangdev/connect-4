@@ -33,7 +33,7 @@ while true
 
     board.display_board
     game.check_winner(board.winner_symbol, player1.player_symbol, player2.player_symbol)
-    return false
+    false
   end
 
   column_space = false
@@ -44,6 +44,6 @@ while true
 
     board.display_board
     game.check_winner(board.winner_symbol, player1.player_symbol, player2.player_symbol)
-    return false
+    false
   end
 end
