@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class Board 
-  attr_accessor :board
+  attr_accessor :board, :winner_symbol
 
   def initialize
     @board = nil
+    @winner_symbol = nil
   end
 
   def generate_board 
@@ -35,8 +36,10 @@ class Board
         unless row[i] == "  "
           if row[i] == row[i + 1]
             count += 1 
-            return true if count == 3
-
+            if count == 3
+              @winner_symbol = row[i]
+              return true 
+            end
           else 
             count = 0
           end
@@ -55,7 +58,10 @@ class Board
         unless @board[n][i] == "  "
           if @board[n][i] == @board[n + 1][i]
             count += 1
-            return true if count == 3
+            if count == 3
+              @winner_symbol = @board[n][i]
+              return true 
+            end
           else
             count = 0
           end
@@ -90,6 +96,7 @@ class Board
             @board[i][n] == @board[i + 2][n + 2] &&
             @board[i][n] == @board[i + 3][n + 3]
 
+            @winner_symbol = @board[i][n]
             return true
           else
             next
@@ -109,6 +116,7 @@ class Board
             @board[i][n] == @board[i - 2][n + 2] &&
             @board[i][n] == @board[i - 3][n + 3]
 
+            @winner_symbol = @board[i][n]
             return true
           else
             next

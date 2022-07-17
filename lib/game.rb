@@ -70,6 +70,16 @@ HEREDOC
     return false
   end
 
+  def check_winner(winner_symbol, player1_symbol, player2_symbol)
+    if winner_symbol == player1_symbol
+      puts "Player 1 is the winner!"
+    elsif winner_symbol == player2_symbol
+      puts "Player 2 is the winner!"
+    else
+      puts "The board is filled - it's a tie!"
+    end
+  end
+
   private 
 
   def validate_column_choice(column)

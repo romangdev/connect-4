@@ -32,7 +32,8 @@ while true do
 
     if board.game_over?
       board.display_board
-      return 
+      game.check_winner(board.winner_symbol, player1.player_symbol, player2.player_symbol)
+      return false
     end
   end
 
@@ -45,7 +46,8 @@ while true do
 
     if board.game_over?
       board.display_board
-      return 
+      game.check_winner(board.winner_symbol, player1.player_symbol, player2.player_symbol)
+      return false
     end
   end
 end

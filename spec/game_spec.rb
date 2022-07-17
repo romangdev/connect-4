@@ -197,4 +197,41 @@ describe Game do
       end
     end
   end
+
+  describe "#check_winner" do 
+    context "when winner symbol is red and player1 symbol is red" do 
+      it "outputs that player 1 is the winner" do 
+        expect(game).to receive(:puts).with("Player 1 is the winner!")
+        game.check_winner("\u26d4", "\u26d4", "\u26aa")
+      end
+    end
+
+    context "when winner symbol is red and player2 symbol is red" do 
+      it "outputs that player 1 is the winner" do 
+        expect(game).to receive(:puts).with("Player 2 is the winner!")
+        game.check_winner("\u26d4", "\u26aa", "\u26d4")
+      end
+    end
+
+    context "when winner symbol is white and player1 symbol is white" do 
+      it "outputs that player 1 is the winner" do 
+        expect(game).to receive(:puts).with("Player 1 is the winner!")
+        game.check_winner("\u26aa", "\u26aa", "\u26d4")
+      end
+    end
+
+    context "when winner symbol is white and player2 symbol is white" do 
+      it "outputs that player 1 is the winner" do 
+        expect(game).to receive(:puts).with("Player 2 is the winner!")
+        game.check_winner("\u26aa", "\u26d4", "\u26aa")
+      end
+    end
+
+    context "when no player has one (logically the board must be filled)" do 
+      it "outputs that the game is a tie" do 
+        expect(game).to receive(:puts).with("The board is filled - it's a tie!")
+        game.check_winner(nil, "\u26d4", "\u26aa")
+      end
+    end
+  end
 end
