@@ -66,40 +66,40 @@ class Board
     false
   end
 
-  def four_down_diagonally_col?
+  private
+
+  def four_down_diagonally?
     for i in 0..2
-      count = 0
-      n = 0
-      for x in i..4
-        unless @board[x][n] == "  "
-          if @board[x][n] == @board[x + 1][n + 1]
-            count += 1
-            return true if count == 3
+      for n in 0..3
+        unless @board[i][n] == "  "
+          if @board[i][n] == @board[i + 1][n + 1] &&
+            @board[i][n] == @board[i + 2][n + 2] &&
+            @board[i][n] == @board[i + 3][n + 3]
+
+            return true
           else
-            count = 0
+            next
           end
         end
-        n += 1
       end
     end
 
     false
   end
 
-  def four_up_diagonally_col?
-    for i in 0..2
-      count = 0
-      n = 6
-      for x in i..4
-        unless @board[x][n] == "  "
-          if @board[x][n] == @board[x + 1][n - 1]
-            count += 1
-            return true if count == 3
+  def four_up_diagonally?
+    for i in 5.downto(3)
+      for n in 0..3
+        unless @board[i][n] == "  "
+          if @board[i][n] == @board[i - 1][n + 1] &&
+            @board[i][n] == @board[i - 2][n + 2] &&
+            @board[i][n] == @board[i - 3][n + 3]
+
+            return true
           else
-            count = 0
+            next
           end
         end
-        n -= 1
       end
     end
 
