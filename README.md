@@ -4,6 +4,8 @@ A command line based game of connect four!
 
 ![2022-07-17 19 22 47](https://user-images.githubusercontent.com/74276666/179428962-1ddb1868-60e2-44a0-8bfa-f94906f70f6c.gif)
 
+**You can play a LIVE version of Connect Four here:** https://replit.com/@romangdev/connect-4
+
 # How It's Made:
 Tech used: Ruby
 
