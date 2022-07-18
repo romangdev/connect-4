@@ -7,9 +7,9 @@ A command line based game of connect four!
 **You can play a LIVE version of Connect Four here:** https://replit.com/@romangdev/connect-4
 
 # How It's Made:
-Tech used: Ruby
+Tech used: Ruby, RSpec
 
-This application was created using pure Ruby, with a focus on clean code and organization through OOP principles and utilizing test driven development (TDD). It is composed of 3 classes: a Player class which holds information about individual players, a Board class which generates and holds information about the connect four board, and a Game class which runs various methods to get/place symbols, validate inputs, commence player turns, etc. There's an additional main file that holds a script to run an entire connect four game. 
+This application was created using Ruby and RSpec, with a focus on clean code and organization through OOP principles and utilizing test driven development (TDD). It is composed of 3 classes: a Player class which holds information about individual players, a Board class which generates and holds information about the connect four board, and a Game class which runs various methods to get/place symbols, validate inputs, commence player turns, etc. There's an additional main file that holds a script to run an entire connect four game. 
 
 Furthermore, there are four test files for all 3 classes and the main script file that unit tests usual cases and edge cases for the applicable methods to ensure they work as intended, and allow future work done on this project to refactor without worry about breaking the code.
 
