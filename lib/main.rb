@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require_relative 'lib/board'
-require_relative 'lib/player'
-require_relative 'lib/game'
+require_relative 'board'
+require_relative 'player'
+require_relative 'game'
 
 board = Board.new
 board.generate_board
