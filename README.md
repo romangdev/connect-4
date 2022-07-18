@@ -2,7 +2,7 @@
 
 A command line based game of connect four!
 
-![2022-07-17 19 22 47](https://user-images.githubusercontent.com/74276666/179428962-1ddb1868-60e2-44a0-8bfa-f94906f70f6c.gif)
+![2022-07-17 20 06 22](https://user-images.githubusercontent.com/74276666/179430305-f06d5a5a-726e-4cf0-a75e-a2c90163c5b7.gif)
 
 **You can play a LIVE version of Connect Four here:** https://replit.com/@romangdev/connect-4
 
